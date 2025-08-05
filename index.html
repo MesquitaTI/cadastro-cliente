@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Clientes - Mesquita Tecnologia</title>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 8px;
+      font-size: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 14px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f4f4f4;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mesquita Tecnologia</h1>
+  <h2>Sistema de Cadastro de Clientes</h2>
+
+  <form id="formCliente">
+    <label>Nome:
+      <input type="text" id="nome" required>
+    </label>
+    <label>CPF:
+      <input type="text" id="cpf" required>
+    </label>
+    <label>Telefone:
+      <input type="text" id="telefone">
+    </label>
+    <label>Email:
+      <input type="email" id="email">
+    </label>
+    <label>Equipamentos:
+      <select id="equipamentos">
+        <option value="Notebook">Notebook</option>
+        <option value="Computador">Computador</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </label>
+    <label>Data de Nascimento:
+      <input type="date" id="dataNascimento">
+    </label>
+    <label>Descrição do Serviço:
+      <textarea id="descricao" rows="4" placeholder="Descreva o serviço prestado..."></textarea>
+    </label>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <h3>Clientes Cadastrados</h3>
+  <button onclick="exportarCSV()">Exportar para Excel (CSV)</button>
+  <ul id="listaClientes"></ul>
+</body>
+</html>
