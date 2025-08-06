@@ -1,4 +1,3 @@
-
 document.getElementById("formCliente").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -20,7 +19,7 @@ document.getElementById("formCliente").addEventListener("submit", function (e) {
     descricao
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbwBasaHqKBAJCWGMUYLJeRoZzc1sH2IYxfSK6C_nPZX6jqIHurxfbnH69tI-YOIyElwaA/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzpVBMo_s9MHZfDrDaBj3Us6gVnxNMXmGTv2hVebP8OXpo_Bw5vCaB-I01Q1XcnLyNFWg/exec", {
     method: "POST",
     body: JSON.stringify(data),
     mode: "no-cors"
