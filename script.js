@@ -20,7 +20,7 @@ document.getElementById("formCliente").addEventListener("submit", function (e) {
     descricao
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbxHmFoGRGu2yem1XG4doTwX9HdCmbPJF3E_hwIe0Bxm/dev", {
+  fetch("https://script.google.com/macros/s/AKfycbxrzaercUDdE_R3GD_mGaUc4mEioYqUHgWkLMCsmdaRA7mZBNyCuZtr8X3R_iSvcM8/exec", {
     method: "POST",
     body: JSON.stringify(dados),
     mode: "no-cors"
