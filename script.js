@@ -1,6 +1,13 @@
 document.getElementById("formCliente").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  // Mostrar aviso e spinner
+  const aviso = document.getElementById("avisoEnvio");
+  const btn = document.getElementById("btnCadastrar");
+  aviso.style.display = "block";
+  btn.disabled = true;
+  btn.textContent = "Enviando...";
+
   const nome = document.getElementById("nome").value;
   const cpf = document.getElementById("cpf").value;
   const telefone = document.getElementById("telefone").value;
@@ -31,5 +38,10 @@ document.getElementById("formCliente").addEventListener("submit", function (e) {
   .catch((error) => {
     alert("Erro ao enviar cadastro. Verifique a conexão ou o link do Google Script.");
     console.error("Erro:", error);
+  })
+  .finally(() => {
+    aviso.style.display = "none";
+    btn.disabled = false;
+    btn.textContent = "Cadastrar";
   });
 });
