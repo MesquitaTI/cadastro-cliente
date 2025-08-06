@@ -1,64 +1,32 @@
+document.getElementById("cadastroForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-const form = document.getElementById('formCliente');
-const lista = document.getElementById('listaClientes');
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const nascimento = document.getElementById("nascimento").value;
+    const equipamento = document.getElementById("equipamento").value;
+    const descricao = document.getElementById("descricao").value;
 
-function carregarClientes() {
-  const clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
-  lista.innerHTML = '';
-  clientes.forEach((cliente, index) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <strong>${cliente.nome}</strong> | CPF: ${cliente.cpf} | Tel: ${cliente.telefone} |
-      Email: ${cliente.email} | Equipamentos: ${cliente.equipamentos} | Nascimento: ${cliente.dataNascimento} <br>
-      <strong>Descrição:</strong> ${cliente.descricao}
-      <button onclick="excluirCliente(${index})">Excluir</button>
-    `;
-    lista.appendChild(li);
-  });
-}
+    const data = {
+        nome,
+        telefone,
+        nascimento,
+        equipamento,
+        descricao
+    };
 
-function excluirCliente(index) {
-  const clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
-  clientes.splice(index, 1);
-  localStorage.setItem('clientes', JSON.stringify(clientes));
-  carregarClientes();
-}
-
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const cliente = {
-    nome: document.getElementById('nome').value,
-    cpf: document.getElementById('cpf').value,
-    telefone: document.getElementById('telefone').value,
-    email: document.getElementById('email').value,
-    equipamentos: document.getElementById('equipamentos').value,
-    dataNascimento: document.getElementById('dataNascimento').value,
-    descricao: document.getElementById('descricao').value
-  };
-  const clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
-  clientes.push(cliente);
-  localStorage.setItem('clientes', JSON.stringify(clientes));
-  form.reset();
-  carregarClientes();
+    fetch("https://script.google.com/macros/s/AKfycbxXxkadTyy3gwpGMlLFxQAo0vaM25z2o2jWCG0108-UOf8OZ_131V_1AsjCo8l1xPu2rQ/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        mode: "no-cors"
+    })
+    .then(() => {
+        alert("Cadastro enviado com sucesso para o Google Sheets!");
+        document.getElementById("cadastroForm").reset();
+    })
+    .catch((error) => {
+        alert("Erro ao enviar cadastro. Verifique a conexão ou o link do Google Script.");
+        console.error("Erro:", error);
+    });
 });
-
-function exportarCSV() {
-  const clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
-  if (clientes.length === 0) {
-    alert('Nenhum cliente para exportar!');
-    return;
-  }
-
-  let csv = 'Nome,CPF,Telefone,Email,Equipamentos,Data de Nascimento,Descrição do Serviço\n';
-  clientes.forEach(c => {
-    csv += `${c.nome},${c.cpf},${c.telefone},${c.email},${c.equipamentos},${c.dataNascimento},"${c.descricao.replace(/"/g, '""')}"\n`;
-  });
-
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'clientes.csv';
-  link.click();
-}
-
-carregarClientes();
+Atualiza script.js para integrar com Google Sheets
