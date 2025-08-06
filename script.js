@@ -1,17 +1,21 @@
-document.getElementById("cadastroForm").addEventListener("submit", function (e) {
+document.getElementById("formCliente").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const nome = document.getElementById("nome").value;
+    const cpf = document.getElementById("cpf").value;
     const telefone = document.getElementById("telefone").value;
-    const nascimento = document.getElementById("nascimento").value;
-    const equipamento = document.getElementById("equipamento").value;
+    const email = document.getElementById("email").value;
+    const dataNascimento = document.getElementById("dataNascimento").value;
+    const equipamentos = document.getElementById("equipamentos").value;
     const descricao = document.getElementById("descricao").value;
 
     const data = {
         nome,
+        cpf,
         telefone,
-        nascimento,
-        equipamento,
+        email,
+        dataNascimento,
+        equipamentos,
         descricao
     };
 
@@ -22,11 +26,10 @@ document.getElementById("cadastroForm").addEventListener("submit", function (e) 
     })
     .then(() => {
         alert("Cadastro enviado com sucesso para o Google Sheets!");
-        document.getElementById("cadastroForm").reset();
+        document.getElementById("formCliente").reset();
     })
     .catch((error) => {
         alert("Erro ao enviar cadastro. Verifique a conexão ou o link do Google Script.");
         console.error("Erro:", error);
     });
 });
-Atualiza script.js para integrar com Google Sheets
