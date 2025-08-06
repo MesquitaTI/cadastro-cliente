@@ -1,7 +1,7 @@
+
 document.getElementById("formCliente").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  // Coleta os dados do formulário
   const nome = document.getElementById("nome").value;
   const cpf = document.getElementById("cpf").value;
   const telefone = document.getElementById("telefone").value;
@@ -10,7 +10,6 @@ document.getElementById("formCliente").addEventListener("submit", function (e) {
   const dataNascimento = document.getElementById("dataNascimento").value;
   const descricao = document.getElementById("descricao").value;
 
-  // Monta os dados como objeto
   const dados = {
     nome,
     cpf,
@@ -21,11 +20,10 @@ document.getElementById("formCliente").addEventListener("submit", function (e) {
     descricao
   };
 
-  // Envia para o Google Sheets via Apps Script
-  fetch("https://script.google.com/macros/s/AKfycbxXxkadTyy3gwpGMlLFxQAo0vaM25z2o2jWCG0108-UOf8OZ_131V_1AsjCo8l1xPu2rQ/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxHmFoGRGu2yem1XG4doTwX9HdCmbPJF3E_hwIe0Bxm/dev", {
     method: "POST",
     body: JSON.stringify(dados),
-    mode: "no-cors" // necessário para funcionar com Google Apps Script sem CORS
+    mode: "no-cors"
   })
     .then(() => {
       alert("Cadastro enviado com sucesso!");
