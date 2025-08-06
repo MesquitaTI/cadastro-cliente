@@ -2,40 +2,24 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro de Clientes - Mesquita Tecnologia</title>
   <script defer src="script.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      margin: 0;
-      padding: 0;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
     }
 
-    .container {
-      max-width: 700px;
-      margin: 50px auto;
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .logo {
-      display: block;
-      margin: 0 auto 20px auto;
-      max-height: 100px;
-    }
-
-    h1, h2 {
+    h1 {
       text-align: center;
       color: #2c3e50;
     }
 
     form {
       display: grid;
-      gap: 15px;
+      gap: 10px;
     }
 
     label {
@@ -45,27 +29,24 @@
     }
 
     input, select, textarea {
-      padding: 10px;
-      font-size: 15px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      padding: 8px;
+      font-size: 14px;
       width: 100%;
       box-sizing: border-box;
     }
 
     button {
-      padding: 12px;
-      font-size: 16px;
-      background-color: #007bff;
-      border: none;
-      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+      background-color: #3498db;
       color: white;
+      border: none;
       cursor: pointer;
-      transition: background-color 0.3s;
+      margin-top: 10px;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #2980b9;
     }
 
     ul {
@@ -82,42 +63,38 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="logo.png" alt="Logo Mesquita Tecnologia" class="logo">
-    <h1>Mesquita Tecnologia</h1>
-    <h2>Sistema de Cadastro de Clientes</h2>
+  <h1>Mesquita Tecnologia</h1>
+  <h2>Sistema de Cadastro de Clientes</h2>
 
-    <form id="cadastroForm">
-      <label>Nome:
-        <input type="text" id="nome" required>
-      </label>
-      <label>CPF:
-        <input type="text" id="cpf" required>
-      </label>
-      <label>Telefone:
-        <input type="text" id="telefone">
-      </label>
-      <label>Email:
-        <input type="email" id="email">
-      </label>
-      <label>Equipamentos:
-        <select id="equipamentos">
-          <option value="Notebook">Notebook</option>
-          <option value="Computador">Computador</option>
-          <option value="Outros">Outros</option>
-        </select>
-      </label>
-      <label>Data de Nascimento:
-        <input type="date" id="dataNascimento">
-      </label>
-      <label>Descrição do Serviço:
-        <textarea id="descricao" rows="4" placeholder="Descreva o serviço prestado..."></textarea>
-      </label>
-      <button type="submit">Cadastrar</button>
-    </form>
+  <form id="formCliente">
+    <label>Nome:
+      <input type="text" id="nome" required>
+    </label>
+    <label>CPF:
+      <input type="text" id="cpf" required>
+    </label>
+    <label>Telefone:
+      <input type="text" id="telefone">
+    </label>
+    <label>Email:
+      <input type="email" id="email">
+    </label>
+    <label>Equipamentos:
+      <select id="equipamentos">
+        <option value="Notebook">Notebook</option>
+        <option value="Computador">Computador</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </label>
+    <label>Data de Nascimento:
+      <input type="date" id="dataNascimento">
+    </label>
+    <label>Descrição do Serviço:
+      <textarea id="descricao" rows="4" placeholder="Descreva o serviço prestado..."></textarea>
+    </label>
+    <button type="submit">Cadastrar</button>
+  </form>
 
-    <h3>Clientes Cadastrados</h3>
-    <ul id="listaClientes"></ul>
-  </div>
+  <ul id="listaClientes"></ul>
 </body>
 </html>
