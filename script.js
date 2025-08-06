@@ -1,7 +1,7 @@
+
 document.getElementById("formCliente").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  // Mostrar aviso e spinner
   const aviso = document.getElementById("avisoEnvio");
   const btn = document.getElementById("btnCadastrar");
   aviso.style.display = "block";
